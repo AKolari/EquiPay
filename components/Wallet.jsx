@@ -16,7 +16,7 @@ const [walletError, setWalletError]=useState(null)
 const getWallet = async()=>{
     const Data = await getWalletById(wallet_id);
 
-    setWalletData(Data);
+    setWalletData(Data.data);
     setWalletStatus(Data.status);
     setWalletError(Data.error);
     console.log(Data.status)
@@ -39,7 +39,9 @@ useEffect(()=>{
         <>
         { (walletStatus=="Loading")? <p>Loading</p>: 
         !!walletError? <p>{walletError}</p>: <div>
-            <p className=" text-white " > {JSON.stringify(walletData)}</p>
+            <p className=" text-white " > Name:{walletData.name}</p>
+            <p className=" text-white " > Description:{walletData.description}</p>
+            <p className=" text-white " > Balance:{walletData.balance}</p>
 
         </div>
         

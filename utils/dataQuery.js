@@ -225,7 +225,7 @@ const getWalletById = async (walletId) => {
   const { data, error } = await supabase
     .from("wallet")
     .select("*")
-    .eq("id", walletId);
+    .eq("id", walletId).single();
   if (error) {
     return {
       success: false,
@@ -250,28 +250,21 @@ const getWallets = async (userId) => {
   }
 
   return { success: true, data };
+
 };
 
-
-/*
-const addNewList = async (
+const addNewWallet = async (
   user_id,
-  list_title,
-  list_item,
-  list_order,
-  username,
-  is_checked,
-  list_id
+  balance,
+  name,
+  description
 ) => {
   //linkRequestData.data = null;
-  const insertResponse = await supabase.from("lists").insert({
+  const insertResponse = await supabase.from("wallet").insert({
     user_id,
-    list_title,
-    list_item,
-    list_order,
-    username,
-    is_checked,
-    list_id,
+    balance,
+    name,
+    description
   });
   if (insertResponse.error) {
     return {
@@ -285,6 +278,10 @@ const addNewList = async (
     data: insertResponse.data,
   };
 };
+
+
+/*
+
 
 
 
@@ -406,7 +403,7 @@ export {
   //getLists,
  // ifOwnList,
  // getListItems,
- // addNewList,
+  addNewWallet,
   getCurrentUser,
   loginUser,
   registerUser,
