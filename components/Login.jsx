@@ -66,9 +66,11 @@ const Login = () => {
     setLocalID(hold);
 
     if (!!response?.success) {
+      console.log(response.data.user.id);
+      setLocalID(response.data.user.id);
       setTimeout(() => {
-        router.replace(`/user/${localID}`);
-      }, 2000);
+        router.replace(`/user/${response.data.user.id}`);
+      }, 10000);
     }
 
     //Jumps to user page

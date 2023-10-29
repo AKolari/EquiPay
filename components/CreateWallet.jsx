@@ -14,6 +14,7 @@ const CreateWallet = ({userId}) => {
   const [localUsername, setLocalUsername] = useState("");
   const [submissionStatus, setSubmissionStatus] = useState(null);
   const [submissionMessage, setSubmissionMessage] = useState("");
+  const [selectedCurrency, setSelectedCurrency] = useState("USD")
   const router = useRouter();
 
   const handleAddItem = () => {
@@ -50,7 +51,8 @@ const CreateWallet = ({userId}) => {
         user.id, //user_id
         walletBalance,
         walletName,
-        walletDescription
+        walletDescription,
+        selectedCurrency
       );
     
         console.log(addedWallet);
@@ -80,6 +82,12 @@ const CreateWallet = ({userId}) => {
       query: { listItems: JSON.stringify(listItems) },
     });
   };
+
+  const handleCurrencyChange = (e) => {
+    setSelectedCurrency(e.target.value);
+    
+  };
+
 
   return (
     <div>
@@ -124,6 +132,20 @@ const CreateWallet = ({userId}) => {
                 required=""
               />
             </div>
+          <div className="sm:col-span-2">
+          <label
+                htmlFor="large-input"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Select Currency*
+              </label>
+            <select className="block p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={selectedCurrency} onChange={handleCurrencyChange}>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            {/* Add other currencies as needed */}
+          </select>
+          </div>
             <div className="sm:col-span-2">
               <label
                 htmlFor="large-input"

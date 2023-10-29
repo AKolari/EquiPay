@@ -17,6 +17,7 @@ import {
   
   
 } from "../utils/dataQuery.js";
+import Logout from "./Logout.jsx";
 
 //Is now specific by user_id.
 const Profile = ({ user_id }) => {
@@ -50,11 +51,12 @@ const Profile = ({ user_id }) => {
     fetchLists();
   }, [user_id]);
 
-  
+
 
 
   return (
     <>
+    <Logout/>
     
       {/* <h3 className="text-start text-5xl p-10">Hello {localUsername}!</h3> */}
       <h3 className="text-center text-5xl font-bold p-10">Current Lists</h3>
