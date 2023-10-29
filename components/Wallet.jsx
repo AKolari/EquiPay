@@ -13,6 +13,7 @@ const [walletError, setWalletError]=useState(null)
 
 
 
+
 const getWallet = async()=>{
     const Data = await getWalletById(wallet_id);
 
@@ -42,6 +43,8 @@ useEffect(()=>{
             <p className=" text-white " > Name:{walletData.name}</p>
             <p className=" text-white " > Description:{walletData.description}</p>
             <p className=" text-white " > Balance:{walletData.balance}</p>
+
+            
 
         </div>
         
