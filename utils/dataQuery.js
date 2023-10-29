@@ -13,7 +13,7 @@ const getCurrentUser = async () => {
     const { data, error } = await supabase
       .from("profile")
       .select("*")
-      .eq("user_id", session.data.session.user.id)
+      .eq("id", session.data.session.user.id)
       .single();
     // here we take the user from the session.data.session
     // object and attach to it a property bargeMeta
@@ -49,7 +49,7 @@ const getCurrentID = async () => {
     const { data, error } = await supabase
       .from("profile")
       .select("*")
-      .eq("user_id", session.data.session.user.id)
+      .eq("id", session.data.session.user.id)
       .single();
 
     if (error) {
@@ -59,7 +59,7 @@ const getCurrentID = async () => {
       };
     }
 
-    return data.user_id;
+    return data.id;
   }
 };
 
@@ -113,7 +113,7 @@ const registerUser = async (
     const addMetaResponse = await supabase
       .from("profile")
       .insert([
-        { user_id: authResponse.data.user.id, first_name, last_name, username },
+        { id: authResponse.data.user.id, username, first_name, last_name },
       ]);
 
     if (addMetaResponse.error) {
@@ -162,7 +162,7 @@ const loginUser = async (email, password) => {
     const meta = await supabase
       .from("profile")
       .select("*")
-      .eq("user_id", authResponse.data.user.id);
+      .eq("id", authResponse.data.user.id);
 
     if (meta.error) {
       return {
@@ -204,7 +204,7 @@ const logoutUser = async () => {
 const getUserByUsername = async (username) => {
   const { data, error } = await supabase
     .from("profile")
-    .select("user_id")
+    .select("id")
     .eq("name", username)
     .limit(1)
     .single();
@@ -219,6 +219,37 @@ const getUserByUsername = async (username) => {
     success: true,
     data,
   };
+};
+
+const getWalletById = async (walletId) => {
+  const { data, error } = await supabase
+    .from("wallet")
+    .select("*")
+    .eq("id", walletId);
+  if (error) {
+    return {
+      success: false,
+      error,
+    };
+  }
+
+  return { success: true, data };
+};
+
+const getWallets = async (userId) => {
+  const { data, error } = await supabase
+    .from("wallet")
+    .select("*")
+    .eq("user_id", userId);
+  if (error) {
+    console.log(error);
+    return {
+      success: false,
+      error,
+    };
+  }
+
+  return { success: true, data };
 };
 
 
@@ -255,35 +286,9 @@ const addNewList = async (
   };
 };
 
-const getLists = async (userId) => {
-  const { data, error } = await supabase
-    .from("lists")
-    .select("*")
-    .eq("user_id", userId);
-  if (error) {
-    return {
-      success: false,
-      error,
-    };
-  }
 
-  return { success: true, data };
-};
 
-const getListItems = async (listId) => {
-  const { data, error } = await supabase
-    .from("lists")
-    .select("*")
-    .eq("list_id", listId);
-  if (error) {
-    return {
-      success: false,
-      error,
-    };
-  }
 
-  return { success: true, data };
-};
 
 //Checks if a list_id matches a specific user_id. Returns a boolean
 const ifOwnList = async (listId, userId) => {
@@ -408,6 +413,8 @@ export {
   logoutUser,
   getCurrentID,
   getUserByUsername,
+  getWalletById,
+  getWallets
  // updateList,
  // deleteItems,
   //updateListItems,

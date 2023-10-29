@@ -1,4 +1,4 @@
-import { getCurrentUser } from "../utils/data";
+import { getCurrentUser } from "../utils/dataQuery";
 import supabase from "../utils/supabase";
 import { useEffect, useState } from "react";
 
