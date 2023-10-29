@@ -51,7 +51,8 @@ const CreateWallet = ({userId}) => {
         user.id, //user_id
         walletBalance,
         walletName,
-        walletDescription
+        walletDescription,
+        selectedCurrency
       );
     
         console.log(addedWallet);
