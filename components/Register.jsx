@@ -167,6 +167,7 @@ const Register = () => {
                 <button
                   type="submit"
                   className="text-white bg-stone-700 hover:bg-stone-800 focus:ring-4 focus:outline-none focus:ring-stone-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-stone-600 dark:hover:bg-stone-700 dark:focus:ring-stone-800"
+                  href="/login"
                 >
                   Sign Up
                 </button>

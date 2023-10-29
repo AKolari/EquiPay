@@ -57,7 +57,7 @@ const Profile = ({ user_id }) => {
     <>
     
       {/* <h3 className="text-start text-5xl p-10">Hello {localUsername}!</h3> */}
-      <h3 className="text-center text-5xl font-bold p-10">Current Lists</h3>
+      <h3 className="text-center text-5xl font-bold p-10">Current Wallet</h3>
       {/* <p>{localWallets
 }</p> */}
 
@@ -70,6 +70,8 @@ const Profile = ({ user_id }) => {
                 <Wallet wallet_id={value} ></Wallet>
 
 
+
+
             </div>
             
             
@@ -77,7 +79,11 @@ const Profile = ({ user_id }) => {
           );
         })}
       </div>
-     
+      <Link href={`/${user_id}/create`}>
+      <button className="text-white bg-stone-700 hover:bg-stone-800 focus:ring-4 focus:outline-none focus:ring-stone-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-stone-600 dark:hover:bg-stone-700 dark:focus:ring-stone-800">
+        Add to Your Wallet
+      </button>
+    </Link>
     </>
   );
 };
