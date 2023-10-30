@@ -39,7 +39,7 @@ useEffect(()=>{
     return(
         <>
         { (walletStatus=="Loading")? <p>Loading</p>: 
-        !!walletError? <p>{walletError}</p>: <div>
+        !!walletError? <p>{walletError}</p>: <div className = "p-4 border border-black">
             <p className=" text-blue " > <span className="font-bold">Name: </span>{walletData.name}</p>
             <p className=" text-blue " > <span className="font-bold">Description: </span>{walletData.description}</p>
             <p className=" text-blue " > <span className="font-bold">Currency: </span>{walletData.currency}</p>
