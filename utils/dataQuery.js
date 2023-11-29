@@ -120,7 +120,7 @@ const registerUser = async (
       return {
         success: false,
         message: addMetaResponse.error.message,
-      }; 
+      };
     }
     return {
       success: true,
@@ -152,7 +152,7 @@ const loginUser = async (email, password) => {
   });
 
   if (authResponse.error) {
-    console.log(authResponse.error)
+    console.log(authResponse.error);
     return {
       success: false,
       message: authResponse.error,
@@ -226,7 +226,8 @@ const getWalletById = async (walletId) => {
   const { data, error } = await supabase
     .from("wallet")
     .select("*")
-    .eq("id", walletId).single();
+    .eq("id", walletId)
+    .single();
   if (error) {
     return {
       success: false,
@@ -251,21 +252,15 @@ const getWallets = async (userId) => {
   }
 
   return { success: true, data };
-
 };
 
-const addNewWallet = async (
-  user_id,
-  balance,
-  name,
-  description
-) => {
+const addNewWallet = async (user_id, balance, name, description) => {
   //linkRequestData.data = null;
   const insertResponse = await supabase.from("wallet").insert({
     user_id,
     balance,
     name,
-    description
+    description,
   });
   if (insertResponse.error) {
     return {
@@ -280,6 +275,26 @@ const addNewWallet = async (
   };
 };
 
+const addNewPayment = async (user_id, card_number, name, CSV) => {
+  //linkRequestData.data = null;
+  const insertResponse = await supabase.from("paymentMethods").insert({
+    user_id,
+    card_number,
+    name,
+    CSV,
+  });
+  if (insertResponse.error) {
+    return {
+      success: false,
+      error: insertResponse.error,
+    };
+  }
+  return {
+    success: true,
+    message: "successfully added",
+    data: insertResponse.data,
+  };
+};
 
 /*
 
@@ -402,8 +417,8 @@ const getLatestUsers = async (num = 5) => {
 */
 export {
   //getLists,
- // ifOwnList,
- // getListItems,
+  // ifOwnList,
+  // getListItems,
   addNewWallet,
   getCurrentUser,
   loginUser,
@@ -412,9 +427,10 @@ export {
   getCurrentID,
   getUserByUsername,
   getWalletById,
-  getWallets
- // updateList,
- // deleteItems,
+  getWallets,
+  addNewPayment,
+  // updateList,
+  // deleteItems,
   //updateListItems,
- // getLatestUsers,
+  // getLatestUsers,
 };
