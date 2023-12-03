@@ -76,6 +76,21 @@ const Login = () => {
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900">
+      {response && (
+        <div
+          className={`${
+            response.success
+              ? "bg-green-200 border-2 border-green-800 text-green-800"
+              : "bg-red-200 border-2 border-red-800 text-red-800"
+          } py-2 px-5 my-10 text-center`}
+        >
+          <span className="font-bold">
+            {response.success
+              ? `Success ${response.message ? `: ` : ``}`
+              : `Failure: ${response.message}`}
+          </span>
+        </div>
+      )}
       <section className="bg-gray-50 dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">

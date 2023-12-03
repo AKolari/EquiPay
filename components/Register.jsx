@@ -8,11 +8,9 @@ import { registerUser } from "../utils/dataQuery";
 import { useReducer } from "react";
 import { useRouter } from "next/navigation";
 
-
 const Register = () => {
   //useUserMustBeLogged("out", "/User");
   const router = useRouter();
-
 
   const keyText = (key, type) => {
     switch (key) {
@@ -110,12 +108,27 @@ const Register = () => {
         router.push("/login");
       }, 3000);
     }
-    console.log(response)
+    console.log(response);
   };
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900">
-     
+      {response && (
+        <div
+          className={`${
+            response.success
+              ? "bg-green-200 border-2 border-green-800 text-green-800"
+              : "bg-red-200 border-2 border-red-800 text-red-800"
+          } py-2 px-5 my-10 text-center`}
+        >
+          <span className="font-bold">
+            {response.success
+              ? `Success ${response.message ? `: ` : ``}`
+              : "Failure: "}
+          </span>
+          {response.message}
+        </div>
+      )}
 
       <section className="bg-gray-50 dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -125,9 +138,12 @@ const Register = () => {
                 Sign Up for an account
               </h1>
               <form
-               
                 onSubmit={register}
-                className={loading ? "space-y-4 md:space-y-6 opacity-[10%] pointer-events-none" : "space-y-4 md:space-y-6"}
+                className={
+                  loading
+                    ? "space-y-4 md:space-y-6 opacity-[10%] pointer-events-none"
+                    : "space-y-4 md:space-y-6"
+                }
                 action="#"
               >
                 {Object.keys(initialState)
@@ -163,7 +179,6 @@ const Register = () => {
                     );
                   })}
 
-
                 <button
                   type="submit"
                   className="text-white bg-stone-700 hover:bg-stone-800 focus:ring-4 focus:outline-none focus:ring-stone-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-stone-600 dark:hover:bg-stone-700 dark:focus:ring-stone-800"
@@ -171,7 +186,6 @@ const Register = () => {
                 >
                   Sign Up
                 </button>
-              
               </form>
             </div>
           </div>

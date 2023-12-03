@@ -47,12 +47,16 @@ const Profile = ({ user_id }) => {
 
   return (
     <>
-      <Link href={`/user/${user_id}/payment`}>
-        <button className="text-white bg-stone-700 hover:bg-stone-800 focus:ring-4 focus:outline-none focus:ring-stone-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-stone-600 dark:hover:bg-stone-700 dark:focus:ring-stone-800">
-          Add Card
-        </button>
-      </Link>
-      <Logout />
+      <div className="flex justify-end">
+        <Link href={`/user/${user_id}/payment`}>
+          <button className=" m-2 text-white bg-stone-700 hover:bg-stone-800 focus:ring-4 focus:outline-none focus:ring-stone-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-stone-600 dark:hover:bg-stone-700 dark:focus:ring-stone-800">
+            Add Card
+          </button>
+        </Link>
+        <div className="m-2">
+          <Logout />
+        </div>
+      </div>
 
       {/* <h3 className="text-start text-5xl p-10">Hello {localUsername}!</h3> */}
       <h3 className="text-center text-5xl font-bold p-10">Current Wallets</h3>

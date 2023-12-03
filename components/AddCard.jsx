@@ -4,6 +4,7 @@ import React from "react";
 
 import "/src/app/globals.css";
 import "./generalCSS.css";
+import Link from "next/link";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -96,6 +97,13 @@ const AddCard = ({ userId }) => {
 
   return (
     <div>
+      <div className="flex justify-start">
+        <Link href={`/user/${userId}`}>
+          <button className=" m-2 text-white bg-stone-400 hover:bg-red-800  focus:ring-4 focus:outline-none focus:ring-stone-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-stone-600 dark:hover:bg-stone-700 dark:focus:ring-stone-800">
+            Profile
+          </button>
+        </Link>
+      </div>
       <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
         <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
           Add New Credit Card

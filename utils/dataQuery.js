@@ -296,6 +296,22 @@ const addNewPayment = async (user_id, card_number, name, CSV) => {
   };
 };
 
+const getCards = async (user_id) => {
+  const { data, error } = await supabase
+    .from("paymentMethods")
+    .select("*")
+    .eq("user_id", user_id);
+  if (error) {
+    console.log(error);
+    return {
+      success: false,
+      error,
+    };
+  }
+
+  return { success: true, data };
+};
+
 /*
 
 
@@ -429,6 +445,7 @@ export {
   getWalletById,
   getWallets,
   addNewPayment,
+  getCards,
   // updateList,
   // deleteItems,
   //updateListItems,
