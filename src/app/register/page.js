@@ -1,6 +1,6 @@
 //import Register from "@/Components/Register";
 function Page(){
-    return (`
+    return (
       //<Register/>
     )
 }
