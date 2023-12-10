@@ -1,6 +1,6 @@
-import Register from "../../../components/register";
+import Register from "../../../components/Register";
 function Page() {
-  return <Register />;
+  return <></>;
 }
 
 export default Page;
