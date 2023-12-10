@@ -17,12 +17,12 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Key Folders:
-```
-components: A folder that contains all of the necessary components for the application.
-hooks: A flder containing hooks related to accessing user information and the status of the logged in user.
-src/app: A folder that contains the specific routes and pages of the Next.js application
-utils: A folder containing functions related to getting information from the API
-```
+
+- components: A folder that contains all of the necessary components for the application.
+- hooks: A flder containing hooks related to accessing user information and the status of the logged in user.
+- src/app: A folder that contains the specific routes and pages of the Next.js application
+- utils: A folder containing functions related to getting information from the API
+
 
 ## Setting up ENV variables
 This project has private ENV variables that will be required to make this project work. These variables are necessary to connect to the SupaBase database, and actually run the application locally. Below are the steps to setting up these variables.
@@ -46,5 +46,5 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy on Vercel
 
-This project has already been deployed on Vercel. You can check it out [here] (https://equi-pay.vercel.app/)
+This project has already been deployed on Vercel. You can check it out [here](https://equi-pay.vercel.app/)
 Simply follow the instructions to set up an account and see how the product works
