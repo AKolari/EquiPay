@@ -16,9 +16,24 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Key Folders:
+```
+components: A folder that contains all of the necessary components for the application.
+hooks: A flder containing hooks related to accessing user information and the status of the logged in user.
+src/app: A folder that contains the specific routes and pages of the Next.js application
+utils: A folder containing functions related to getting information from the API
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Setting up ENV variables
+This project has private ENV variables that will be required to make this project work. These variables are necessary to connect to the SupaBase database, and actually run the application locally. Below are the steps to setting up these variables.
+
+1. Create a new file .env.local in the root directory
+2. Create two new variables:
+     - NEXT_PUBLIC_SUPABASE_URL
+     - NEXT_PUBLIC_SUPABASE_PUBLIC_KEY
+3. Contact project owner for apprival to acccess these variables
+     
+  
 
 ## Learn More
 
@@ -31,6 +46,5 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project has already been deployed on Vercel. You can check it out [here] (https://equi-pay.vercel.app/)
+Simply follow the instructions to set up an account and see how the product works
