@@ -1,10 +1,8 @@
-
-/*import Register from "@/Components/Register";
+//import Register from "@/Components/Register";
 function Page(){
-    return (
-      <Register/>
+    return (`
+      //<Register/>
     )
 }
 
 export default Page;
-*/
