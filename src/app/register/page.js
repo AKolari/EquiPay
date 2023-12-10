@@ -1,4 +1,5 @@
-import Register from "@/Components/Register";
+
+/*import Register from "@/Components/Register";
 function Page(){
     return (
       <Register/>
@@ -6,3 +7,4 @@ function Page(){
 }
 
 export default Page;
+*/
